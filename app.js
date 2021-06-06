@@ -79,7 +79,7 @@ for (let index = 0; index <number_of_matrix; index++) {
        <div class="text-white display-3"  data-aos="fade-down"  data-aos-duration="1000">
        کمترین تعداد ضرب ${table[0][number_of_matrix - 1]} 
        </div>
-       <div class="text-white display-3 mt-5 ml-4"  data-aos="fade-down"  data-aos-duration="1000">
+       <div class="text-white display-3 mt-4 ml-4"  data-aos="fade-down"  data-aos-duration="1000">
         ${result} 
        </div>`);
 }
