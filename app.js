@@ -1,3 +1,5 @@
+let matrix=[];
+let r=[];
 AOS.init();
 let number_of_matrix;   
 $(".form").submit(function (e) { 
@@ -11,18 +13,14 @@ $(".form").submit(function (e) {
     $('#submit').attr("id","new_submit")
     for(let i=0;i<number_of_matrix;i++){
         $('.form-group').append(`
-        <input type="text" class="form-control text-right mb-2" id="row${i}" placeholder="سطر ماتریس ${i+1} " data-aos="fade-right" data-aos-delay="1400">
-        <input type="text" class="form-control text-right mb-2" id="column${i}" placeholder="ستون ماتریس  ${i+1}" data-aos="fade-left" data-aos-delay="1000">
+        <input type="text" class="form-control text-right mb-2" id="row${i}" placeholder="سطر ماتریس ${i+1} " data-aos="fade-right" data-aos-duration="1400">
+        <input type="text" class="form-control text-right mb-2" id="column${i}" placeholder="ستون ماتریس  ${i+1}" data-aos="fade-left" data-aos-duration="1000">
         `);
     }
     $('.form-group').append(`
-    <button type="button" class="btn btn-primary mb-2" id="button"onclick='insert_data()'>تایید</button>
+    <button type="button" class="btn btn-primary mb-2" id="button"onclick="insert_data()">تایید</button>
     `);
-
-    
 });
-let matrix=[];
-let r=[];
 function insert_data(){
     
 for (let index = 0; index <number_of_matrix; index++) {
@@ -63,16 +61,25 @@ for (let index = 0; index <number_of_matrix; index++) {
                 }
             }
         }
+        let temp=[]
 
-        $(".form-group").remove();
-
-        $('.form').append(`
-        <div class="text-white display-3"  data-aos="fade-down">
-        کمترین تعداد ضرب ${table[0][number_of_matrix-1]} 
-        </div>
-        `);
-
-
-
+        debugger
+        for(let i=0;i<number_of_matrix;i++){
+            path[i].unshift(0);
+            temp[i]=0
+        }
+        temp[number_of_matrix]=0;
+        path.unshift(temp)
+       let result=printParenthesis(1,number_of_matrix,number_of_matrix+1,path)
+       
+        
+       $(".form-group").remove();
+       
+       $(".form").append(`
+       <div class="text-white display-3"  data-aos="fade-down"  data-aos-duration="1000">
+       کمترین تعداد ضرب ${table[0][number_of_matrix - 1]} 
+       </div>
+       <div class="text-white display-3 mt-5 ml-4"  data-aos="fade-down"  data-aos-duration="1000">
+        ${result} 
+       </div>`);
 }
-
